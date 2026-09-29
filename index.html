@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="no-js" data-whatsapp="" data-area="" data-days="">
+<html lang="en" class="no-js" data-whatsapp="254106761832" data-area="Rongai" data-days="Any time, 24/7">
 <!--
   HEIN YOGHURT - one folder, no build step.
 
@@ -7,148 +7,176 @@
     1. data-whatsapp  -> Hein's number, digits only with country code. e.g. 254700000000
     2. data-area      -> where he delivers or where to collect. e.g. Eastlands
     3. data-days      -> when orders can be collected. e.g. Saturday mornings
-  The prices are in the table below, in the cells, where you can see them.
+  The prices are in the two <b> tags in the cards below, where you can see them.
 -->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hein Yoghurt - vanilla and strawberry, made at home</title>
-<meta name="description" content="Vanilla and strawberry yoghurt from Hein's kitchen. 250 ml for KSh 60, 500 ml for KSh 120. Pick your pots and send the order on WhatsApp.">
-<meta name="theme-color" content="#e6e8e3">
+<title>Hein's Yoghurt - vanilla and strawberry</title>
+<meta name="description" content="Vanilla and strawberry yoghurt made in Hein's kitchen. 250 ml for KSh 60, 500 ml for KSh 120. Choose your pots and order on WhatsApp.">
+<meta name="theme-color" content="#ffffff">
 <meta name="color-scheme" content="light">
-<link rel="preload" href="assets/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- the link preview WhatsApp shows when someone shares this page -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hein's Yoghurt">
+<meta property="og:locale" content="en_KE">
+<meta property="og:title" content="Hein's Yoghurt, vanilla and strawberry">
+<meta property="og:description" content="250 ml for KSh 60. 500 ml for KSh 120. Choose your pots and order on WhatsApp.">
+<!-- og:image needs a full address. Put the address this page is served from in front of the path. -->
+<meta property="og:image" content="assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23128c7e'/%3E%3Cpath d='M20 22h24M20 32h24M20 42h13' stroke='%23fff' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/outfit-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-<a class="skip" href="#pots">Skip to the pots and prices</a>
+<a class="skip" href="#flavours">Skip to the pots and prices</a>
 
-<div class="sheet">
-  <div class="rail" aria-hidden="true"></div>
+<div class="wrap">
 
-  <header class="head">
-    <h1 class="wordmark"><span class="wordmark__given">Hein</span><span class="wordmark__noun">Yoghurt</span></h1>
-    <p class="standfirst">Made at home in Hein's kitchen.</p>
-    <nav class="contents" aria-label="Sections">
-      <a href="#pots">Pots</a>
-      <a href="#order">Order</a>
-      <a href="#details">Details</a>
-    </nav>
+  <header class="top">
+    <h1 class="logo">Hein's
+      <span class="logo__sub">yoghurt</span></h1>
+    <p class="tagline">Vanilla and strawberry, made in Hein's kitchen. Choose your pots and order on WhatsApp.</p>
   </header>
 
   <main>
-    <section class="board" id="pots" aria-labelledby="pots-title">
-      <h2 class="board-title" id="pots-title">Two flavours, two sizes.</h2>
-      <p class="board-note"><span class="board-note__tap">Tap a pot to mark it, tap again for more. The page writes your order and you send it.</span><span class="board-note__plain">Prices are the same for both flavours.</span></p>
 
-      <table class="ledger">
-        <caption class="visually-hidden">Pots available, by size and flavour, with the price of each</caption>
-        <thead>
-          <tr>
-            <th scope="col" class="ledger__stub"><span class="ledger__stubtext">Size</span></th>
-            <th scope="col" class="ledger__head">Vanilla</th>
-            <th scope="col" class="ledger__head">Strawberry</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row" class="ledger__rowhead">250&nbsp;ml</th>
-            <td class="ledger__cell">
-              <button type="button" class="pot" data-flavour="vanilla" data-size="250" aria-pressed="false">
-                <span class="visually-hidden">Vanilla, 250 millilitres, KSh 60.</span>
-                <span class="pot__price">KSh&nbsp;60</span>
-                <span class="pot__mark" data-count="0" aria-hidden="true"></span>
-                <span class="pot__tally" data-count="0" aria-hidden="true"></span>
-                <span class="pot__say visually-hidden"></span>
-              </button>
-            </td>
-            <td class="ledger__cell">
-              <button type="button" class="pot" data-flavour="strawberry" data-size="250" aria-pressed="false">
-                <span class="visually-hidden">Strawberry, 250 millilitres, KSh 60.</span>
-                <span class="pot__price">KSh&nbsp;60</span>
-                <span class="pot__mark" data-count="0" aria-hidden="true"></span>
-                <span class="pot__tally" data-count="0" aria-hidden="true"></span>
-                <span class="pot__say visually-hidden"></span>
-              </button>
-            </td>
-          </tr>
-          <tr class="ledger__row--big">
-            <th scope="row" class="ledger__rowhead">500&nbsp;ml</th>
-            <td class="ledger__cell">
-              <button type="button" class="pot" data-flavour="vanilla" data-size="500" aria-pressed="false">
-                <span class="visually-hidden">Vanilla, 500 millilitres, KSh 120.</span>
-                <span class="pot__price">KSh&nbsp;120</span>
-                <span class="pot__mark" data-count="0" aria-hidden="true"></span>
-                <span class="pot__tally" data-count="0" aria-hidden="true"></span>
-                <span class="pot__say visually-hidden"></span>
-              </button>
-            </td>
-            <td class="ledger__cell">
-              <button type="button" class="pot" data-flavour="strawberry" data-size="500" aria-pressed="false">
-                <span class="visually-hidden">Strawberry, 500 millilitres, KSh 120.</span>
-                <span class="pot__price">KSh&nbsp;120</span>
-                <span class="pot__mark" data-count="0" aria-hidden="true"></span>
-                <span class="pot__tally" data-count="0" aria-hidden="true"></span>
-                <span class="pot__say visually-hidden"></span>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <section class="shelves" id="flavours" aria-label="Pots and prices">
+      <h2 class="sr-only">Choose your pots</h2>
+
+      <article class="flavour flavour--vanilla" data-flavour="vanilla">
+        <header class="flavour__head">
+          <h3 class="flavour__name">Vanilla</h3>
+        </header>
+
+        <div class="pots">
+          <div class="pot" data-size="250">
+            <div class="pot__id">
+              <span class="pot__size">250 <span class="pot__unit">ml</span></span>
+              <span class="pot__price"><b>KSh</b> 60</span>
+              <label class="frozen">
+                <input type="checkbox" data-frozen aria-label="Frozen: vanilla 250 millilitres">
+                <span class="frozen__box" aria-hidden="true"></span>
+                <span class="frozen__text">Frozen</span>
+              </label>
+            </div>
+            <div class="stepper" role="group" aria-label="Vanilla, 250 millilitres, KSh 60">
+              <button type="button" class="step" data-step="-1" aria-label="One fewer vanilla 250 millilitre pot">&minus;</button>
+              <output class="step__n" data-qty aria-live="off">0</output>
+              <button type="button" class="step" data-step="1" aria-label="One more vanilla 250 millilitre pot">+</button>
+            </div>
+          </div>
+
+          <div class="pot" data-size="500">
+            <div class="pot__id">
+              <span class="pot__size">500 <span class="pot__unit">ml</span></span>
+              <span class="pot__price"><b>KSh</b> 120</span>
+              <label class="frozen">
+                <input type="checkbox" data-frozen aria-label="Frozen: vanilla 500 millilitres">
+                <span class="frozen__box" aria-hidden="true"></span>
+                <span class="frozen__text">Frozen</span>
+              </label>
+            </div>
+            <div class="stepper" role="group" aria-label="Vanilla, 500 millilitres, KSh 120">
+              <button type="button" class="step" data-step="-1" aria-label="One fewer vanilla 500 millilitre pot">&minus;</button>
+              <output class="step__n" data-qty aria-live="off">0</output>
+              <button type="button" class="step" data-step="1" aria-label="One more vanilla 500 millilitre pot">+</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="flavour flavour--strawberry" data-flavour="strawberry">
+        <header class="flavour__head">
+          <h3 class="flavour__name">Strawberry</h3>
+        </header>
+
+        <div class="pots">
+          <div class="pot" data-size="250">
+            <div class="pot__id">
+              <span class="pot__size">250 <span class="pot__unit">ml</span></span>
+              <span class="pot__price"><b>KSh</b> 60</span>
+              <label class="frozen">
+                <input type="checkbox" data-frozen aria-label="Frozen: strawberry 250 millilitres">
+                <span class="frozen__box" aria-hidden="true"></span>
+                <span class="frozen__text">Frozen</span>
+              </label>
+            </div>
+            <div class="stepper" role="group" aria-label="Strawberry, 250 millilitres, KSh 60">
+              <button type="button" class="step" data-step="-1" aria-label="One fewer strawberry 250 millilitre pot">&minus;</button>
+              <output class="step__n" data-qty aria-live="off">0</output>
+              <button type="button" class="step" data-step="1" aria-label="One more strawberry 250 millilitre pot">+</button>
+            </div>
+          </div>
+
+          <div class="pot" data-size="500">
+            <div class="pot__id">
+              <span class="pot__size">500 <span class="pot__unit">ml</span></span>
+              <span class="pot__price"><b>KSh</b> 120</span>
+              <label class="frozen">
+                <input type="checkbox" data-frozen aria-label="Frozen: strawberry 500 millilitres">
+                <span class="frozen__box" aria-hidden="true"></span>
+                <span class="frozen__text">Frozen</span>
+              </label>
+            </div>
+            <div class="stepper" role="group" aria-label="Strawberry, 500 millilitres, KSh 120">
+              <button type="button" class="step" data-step="-1" aria-label="One fewer strawberry 500 millilitre pot">&minus;</button>
+              <output class="step__n" data-qty aria-live="off">0</output>
+              <button type="button" class="step" data-step="1" aria-label="One more strawberry 500 millilitre pot">+</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <p class="hint" data-hint>Tap <b>+</b> to add a pot, and tick <b>Frozen</b> if you want it kept cold. Frozen costs the same. Nothing is charged here. The order goes to Hein on WhatsApp.</p>
     </section>
 
-    <section class="order" id="order" aria-labelledby="order-title">
-      <h2 class="order-title" id="order-title">This is the message you will send.</h2>
+    <p class="sr-only" role="status" aria-live="polite" data-live></p>
 
-      <div class="slip" id="slip">
-        <p class="slip__line" data-line id="order-line">Nothing marked yet. Tap a pot above and it is written here.</p>
-        <dl class="slip__meta">
-          <div class="field field--total" data-set="no">
-            <dt>Total</dt>
-            <dd data-total>KSh 0</dd>
-          </div>
-          <div class="field">
-            <dt>Plates</dt>
-            <dd data-plates>0</dd>
-          </div>
-        </dl>
-      </div>
-      <p class="visually-hidden" role="status" aria-live="polite" data-live></p>
-
-      <div class="sendplate" role="group" aria-labelledby="order-title">
-        <p class="sendplate__sum" data-sum><span class="sendplate__pots" data-sum-pots>0 pots</span><span class="sendplate__total" data-sum-total>KSh 0</span></p>
-        <a class="send" data-send href="https://wa.me/?text=Hello%20Hein%2C%20I%20would%20like%20to%20order%20some%20yoghurt.">Message Hein on WhatsApp<svg class="send__arrow" viewBox="0 0 22 13" fill="none" aria-hidden="true" focusable="false"><path d="M1 6.5h19M14.5 1 20 6.5 14.5 12" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></a>
-      </div>
-
-      <p class="order__tools">
-        <button type="button" class="copy" data-copy>Copy the order</button>
-        <span class="order__note" data-note>Opens WhatsApp with the order written out.</span>
-      </p>
-    </section>
-
-    <section class="details" id="details" aria-labelledby="details-title">
-      <h2 class="details-title" id="details-title">Collect it, or have it brought.</h2>
-      <p class="details__body">Hein makes the yoghurt at home, so nothing is posted and nothing is sold through a shop. Message him and agree where and when. These three lines are the ones he fills in on the page:</p>
+    <section class="where" id="where" aria-labelledby="where-title">
+      <h2 class="where__title" id="where-title">Getting your yoghurt.</h2>
+      <p class="where__body">Hein makes the yoghurt at home, so nothing is sold through a shop. Send your order and agree the details with him on WhatsApp.</p>
       <dl class="record">
-        <div class="field field--wide">
+        <div class="record__row">
           <dt>Hein's WhatsApp</dt>
-          <dd data-show="whatsapp"></dd>
+          <!-- written out here too, so the number still shows with scripting off.
+               keep this in step with data-whatsapp on line 2. -->
+          <dd data-show="whatsapp">+254106761832</dd>
         </div>
-        <div class="field field--wide">
+        <div class="record__row">
           <dt>Where</dt>
-          <dd data-show="area"></dd>
+          <dd data-show="area">Rongai</dd>
         </div>
-        <div class="field field--wide">
+        <div class="record__row">
           <dt>When</dt>
-          <dd data-show="days"></dd>
+          <dd data-show="days">Any time, 24/7</dd>
         </div>
       </dl>
-      <p class="details__foot">Prices are in Kenya shillings and they are the same for both flavours. There is no online payment: the message is the order, and the money is settled with Hein when you collect or when he hands it over.</p>
+      <p class="where__foot">Prices are in Kenya shillings, the same for both flavours. There is no online payment: the message is the order, and the money is settled with Hein when he hands the yoghurt over.</p>
     </section>
   </main>
 
   <footer class="foot">
-    <p class="foot__line">Hein Yoghurt<span class="foot__dot"></span>vanilla<span class="foot__dot"></span>strawberry<span class="foot__dot"></span>KSh 60<span class="foot__dot"></span>KSh 120</p>
+    <p>Hein's Yoghurt &middot; vanilla &middot; strawberry &middot; 250 ml KSh 60 &middot; 500 ml KSh 120</p>
   </footer>
+</div>
+
+<!-- the order bar: it follows you down the page and it is the only way out of it -->
+<div class="bar" data-bar>
+  <div class="bar__inner">
+    <div class="bar__sum">
+      <span class="bar__pots" data-sum-pots>Nothing picked yet</span>
+      <span class="bar__total" data-sum-total>KSh 0</span>
+    </div>
+    <a class="wa" data-send href="https://wa.me/?text=Hello%20Hein%2C%20I%20would%20like%20to%20order%20some%20yoghurt.">
+    <svg class="wa__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.55-3.7 8.25-8.25 8.25a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.39c0-4.55 3.7-8.25 8.25-8.25Zm-3.6 4.29c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03 0 1.19.87 2.34.99 2.5.12.16 1.7 2.71 4.2 3.7 2.08.83 2.5.66 2.95.62.45-.04 1.45-.59 1.66-1.17.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28-.24-.12-1.45-.72-1.68-.8-.22-.08-.39-.12-.55.12-.16.24-.63.8-.77.96-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.43h-.47Z"/></svg>
+    <span class="wa__label">Order on WhatsApp</span>
+  </a>
+    <button type="button" class="copy" data-copy>Copy the order instead</button>
+  </div>
 </div>
 
 <script src="assets/app.js"></script>

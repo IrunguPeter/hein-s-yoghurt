@@ -1,46 +1,48 @@
 /* Hein Yoghurt
-   The world: a squared exercise book read as a working order book.
-   Paper, a 30px (8mm) grid, a red margin rule, pencil rules, ballpoint ink, one red. */
+   The world: a small shop window. Two shelves, one price each, and a green
+   door out of it. Clean white, one accent (WhatsApp green, because that is where
+   the order goes), and the two flavours told apart by name first, tint second. */
 
 @font-face {
-  font-family: "Archivo";
-  src: url("archivo-var-latin.woff2") format("woff2");
+  font-family: "Outfit";
+  src: url("outfit-var-latin.woff2") format("woff2");
   font-weight: 100 900;
-  font-stretch: 62% 125%;
+  font-stretch: 100%;
   font-style: normal;
   font-display: swap;
 }
 
 :root {
-  --paper: #e6e8e3;
-  --paper-bright: #f7f7f4;
-  --ink: #1b2430;
-  --ink-quiet: #5a6165;
-  --red: #c0273c;
-  --red-deep: #a32739;
-  --red-ink: #c0273c;
-  --grid: rgba(27, 36, 48, 0.1);
-  --rule: rgba(27, 36, 48, 0.26);
-  --rule-strong: rgba(27, 36, 48, 0.6);
+  --bg: #f2f3f1;
+  --card: #ffffff;
+  --ink: #16211d;
+  --ink-quiet: #55605b;
+  --line: #e2e5e1;
+  --line-soft: #eef0ed;
 
-  --outer: 0.875rem;
-  --margin: 1.5rem;
-  --measure: 42rem;
-  --sheet-width: calc(var(--measure) + var(--outer) + var(--margin));
-  --pad-right: 1.5rem;
-  --grid-size: 30px;
+  /* one accent, dark enough for white text on it (5.2:1) and for green text on
+     the page (4.7:1). the brighter WhatsApp green fails both. */
+  --green: #0f7a6d;
+  --green-dark: #0b6258;
+  --green-tint: #e6f4f2;
+
+  --faint: #7f8883;
+
+  --vanilla-tint: #fbf4e6;
+  --vanilla-line: #eddfc2;
+  --berry-tint: #fdeef1;
+  --berry-line: #f4d3da;
+
+  --gap: 1rem;
+  --pad: 1.25rem;
+  --page: 68rem;
+  --bar-h: 5.25rem;
+
+  --r-card: 1rem;
+  --r-inner: 0.75rem;
+  --r-pill: 999px;
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --stroke: 260ms;
-}
-
-@media (min-width: 40rem) {
-  :root {
-    --outer: 1.75rem;
-    --margin: 2.25rem;
-    --measure: 44rem;
-    --pad-right: 2.5rem;
-  }
 }
 
 *,
@@ -51,38 +53,24 @@
 
 html {
   color-scheme: light;
-  background: var(--paper);
+  background: var(--bg);
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  font-family: "Archivo", system-ui, sans-serif;
-  font-size: 1.0625rem;
-  line-height: 1.55;
+  /* --bar-real is measured by app.js. the fallback keeps the footer clear of the
+     order bar even before scripting runs or if it never does. */
+  padding-bottom: calc(var(--bar-real, 5.5rem) + 1.25rem);
+  font-family: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
   color: var(--ink);
-  background-color: var(--paper);
-  background-image:
-    linear-gradient(to right, var(--grid) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-  background-size: var(--grid-size) var(--grid-size);
-  background-position: var(--outer) 0;
-  caret-color: var(--red);
-  scrollbar-color: var(--rule-strong) var(--paper);
-  scrollbar-width: thin;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
 }
 
-::selection {
-  background: var(--red);
-  color: var(--paper-bright);
-}
-
-:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 3px;
-}
-
-.visually-hidden {
+.sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -98,18 +86,16 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 5;
+  z-index: 20;
   width: 1px;
   height: 1px;
   overflow: hidden;
   clip-path: inset(50%);
   padding: 0;
   background: var(--ink);
-  color: var(--paper);
-  font-stretch: 62%;
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -118,664 +104,554 @@ body {
   height: auto;
   overflow: visible;
   clip-path: none;
-  left: var(--outer);
+  left: 0.75rem;
   top: 0.75rem;
-  padding: 0.8rem 1.1rem;
+  padding: 0.75rem 1rem;
   min-height: 44px;
+  line-height: 1.5;
 }
 
-/* ---- the sheet and its margin rule ---- */
-
-.sheet {
-  position: relative;
-  width: min(100%, var(--sheet-width));
-  min-height: 100vh;
-  margin-inline: auto;
-  padding: 0 var(--pad-right) 12rem calc(var(--outer) + var(--margin));
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
-.rail {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: var(--outer);
-  width: 2px;
-  background: var(--red);
+::selection {
+  background: var(--green);
+  color: #fff;
 }
 
-/* ---- head ---- */
-
-.head {
-  padding: 1rem 0 0;
-  border-top: 2px solid var(--ink);
-  margin-top: 1rem;
-}
-
-.wordmark {
-  margin: 0;
-  font-weight: 800;
-  text-wrap: balance;
-}
-
-.wordmark__given {
-  display: block;
-  font-size: clamp(3.5rem, 18vw, 6.25rem);
-  font-stretch: 125%;
-  line-height: 0.86;
-  letter-spacing: -0.035em;
-}
-
-.wordmark__noun {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  font-stretch: 62%;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink-quiet);
-}
-
-.wordmark__noun::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid var(--rule);
-  transform: translateY(-0.22em);
-}
-
-.standfirst {
-  max-width: 42ch;
-  margin: 1rem 0 0;
-  font-size: 1.0625rem;
-  color: var(--ink);
-}
-
-.contents {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 1.5rem;
-  margin: 1rem 0 0;
-  padding-top: 0.6rem;
-  border-top: 1px solid var(--rule);
-  font-stretch: 62%;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.contents a {
-  display: inline-block;
-  margin: 0 -0.45rem;
-  padding: 0.7rem 0.45rem;
-  min-height: 44px;
-  line-height: 1.6;
-  color: var(--ink-quiet);
-  text-decoration: none;
-  text-underline-offset: 0.3em;
-  text-decoration-thickness: 1px;
-  text-decoration-color: var(--rule-strong);
-}
-
-.contents a:hover {
-  color: var(--ink);
-  text-decoration: underline;
-  text-decoration-color: var(--red);
-}
-
-/* ---- shared section voice ---- */
-
-.board,
-.order,
-.details {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--rule-strong);
-}
-
-/* vanilla is the quiet reference column, strawberry carries the weight */
-.ledger th:nth-child(3) {
-  color: var(--red-ink);
-}
-
-.ledger td:nth-child(3) .pot__price {
-  font-weight: 700;
-}
-
-.board-title,
-.order-title,
-.details-title {
-  max-width: 26ch;
-  margin: 0;
-  font-size: clamp(1.5rem, 5.6vw, 2.125rem);
-  font-weight: 700;
-  font-stretch: 125%;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  text-wrap: balance;
-}
-
-.board-note {
-  max-width: 54ch;
-  margin: 0.75rem 0 0;
-  font-size: 0.9375rem;
-  color: var(--ink-quiet);
-}
-
-/* ---- the ledger ---- */
-
-.ledger {
+.wrap {
   width: 100%;
-  margin-top: 1.5rem;
-  border-collapse: collapse;
-  table-layout: fixed;
+  max-width: var(--page);
+  margin-inline: auto;
+  padding: 0 var(--pad);
 }
 
-.ledger thead th {
-  padding: 0 0 0.5rem;
-  border-bottom: 1px solid var(--rule);
-  font-weight: 600;
+/* ---- the shop sign ---- */
+
+.top {
+  padding: 1.5rem 0 0;
 }
 
-.ledger__stub {
-  width: 4.25rem;
-}
-
-.ledger__stubtext {
-  font-stretch: 62%;
-  font-size: 0.6875rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-quiet);
-}
-
-.ledger__head {
-  font-stretch: 62%;
-  font-size: 0.6875rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-align: right;
-  vertical-align: bottom;
-  color: var(--ink-quiet);
-}
-
-.ledger__rowhead {
-  padding: 0.85rem 0.5rem 0.85rem 0;
-  text-align: left;
-  vertical-align: bottom;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-  color: var(--ink-quiet);
-}
-
-.ledger__row--big .ledger__rowhead {
+.logo {
+  margin: 0;
+  font-size: clamp(2.5rem, 9vw, 3.5rem);
   font-weight: 700;
-  color: var(--ink);
+  letter-spacing: -0.035em;
+  line-height: 1;
 }
 
-.ledger__row--big .ledger__cell {
-  border-bottom: 2px solid var(--ink);
+.logo__sub {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green);
 }
 
-.ledger__cell {
-  padding: 0;
-  border-bottom: 1px solid var(--rule);
-  border-left: 1px solid var(--grid);
-  vertical-align: bottom;
+.tagline {
+  max-width: 46ch;
+  margin: 0.9rem 0 0;
+  color: var(--ink-quiet);
+  font-size: 1.0625rem;
+}
+
+/* ---- the two shelves ---- */
+
+.shelves {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 44rem) {
+  .shelves {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.flavour {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(22, 33, 29, 0.04);
+}
+
+.flavour__head {
+  padding: 1rem var(--pad) 0.9rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.flavour--vanilla .flavour__head {
+  background: var(--vanilla-tint);
+  border-bottom-color: var(--vanilla-line);
+}
+
+.flavour--strawberry .flavour__head {
+  background: var(--berry-tint);
+  border-bottom-color: var(--berry-line);
+}
+
+.flavour__name {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.pots {
+  padding: 0.35rem var(--pad) var(--pad);
 }
 
 .pot {
-  position: relative;
   display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: baseline;
-  gap: 0 0.4rem;
-  width: 100%;
-  min-height: 4.25rem;
-  padding: 0.55rem 0 0.45rem 0.6rem;
-  border: 0;
-  background: none;
-  font: inherit;
-  color: var(--ink);
-  text-align: right;
-  cursor: pointer;
-  transition: background-color 160ms var(--ease);
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "id step"
+    "frozen step";
+  align-items: center;
+  column-gap: 0.75rem;
+  row-gap: 0.15rem;
+  min-height: 4.75rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--line-soft);
 }
 
-.pot:hover {
-  background: rgba(27, 36, 48, 0.05);
+.pot:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
 }
 
-.pot:active {
-  background: rgba(27, 36, 48, 0.09);
-}
-
-.pot__price {
-  grid-column: 2;
-  grid-row: 1;
-  font-size: clamp(1.5rem, 6.4vw, 2rem);
-  font-weight: 600;
-  font-stretch: 78%;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.01em;
-  line-height: 1;
-  transition: color 120ms linear;
-}
-
-.pot[aria-pressed="true"] .pot__price {
-  color: var(--red-ink);
-}
-
-/* the count annotates the price, so it shares its baseline and never moves it */
-.pot__mark {
-  grid-column: 1;
-  grid-row: 1;
-  align-self: baseline;
-  justify-self: end;
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  color: var(--red-ink);
-}
-
-.pot__mark:empty {
-  display: none;
-}
-
-/* the tally: four strokes and a cross, the fifth made */
-.pot__tally {
-  grid-column: 1;
-  grid-row: 1;
-  position: relative;
+.pot__id {
+  grid-area: id;
   display: flex;
-  align-items: flex-end;
-  align-self: end;
-  justify-self: start;
-  gap: 3px;
-  height: 1.15rem;
-  margin-bottom: 0.15rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.1rem 0.6rem;
+  min-width: 0;
 }
 
-.pot__tally:empty {
-  display: none;
+.pot__size {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
-.strike {
-  display: block;
-  width: 2px;
-  height: 1.05rem;
-  background: var(--red-ink);
-  transform: scaleY(0);
-  transform-origin: 50% 100%;
-  transition: transform var(--stroke) var(--ease);
-  transition-delay: calc(var(--i) * 22ms);
-}
-
-.pot[aria-pressed="true"] .strike {
-  transform: scaleY(1);
-}
-
-.strike--cross {
-  position: absolute;
-  bottom: 0.1rem;
-  height: 0;
-  background: none;
-  border-top: 2px solid var(--red-ink);
-  transform-origin: left bottom;
-  transform: rotate(-19deg) scaleX(0);
-  transition: transform var(--stroke) var(--ease);
-  transition-delay: calc(var(--i) * 22ms);
-}
-
-.pot[aria-pressed="true"] .strike--cross {
-  transform: rotate(-19deg) scaleX(1.55);
-}
-
-.pot[aria-pressed="true"] .strike--cross {
-  height: 0;
-  transform: rotate(-19deg) scaleX(1.55);
-}
-
-/* ---- the slip: what the message will say ---- */
-
-.slip {
-  margin: 1rem -0.75rem 0;
-  padding: 0.65rem 0.75rem 0.45rem;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  background: rgba(230, 232, 227, 0.72);
-}
-
-.slip__line {
-  margin: 0;
-  min-height: 3rem;
-  font-size: 1.125rem;
-  font-weight: 500;
-  line-height: 1.35;
-  text-wrap: pretty;
-  transition: color 120ms linear;
-}
-
-.slip__line[data-empty="true"] {
+.pot__unit {
   font-weight: 400;
   color: var(--ink-quiet);
 }
 
-.slip__line em {
-  font-style: normal;
-  color: var(--red-ink);
+.pot__price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
-.slip__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 2.5rem;
-  margin: 0.9rem 0 0;
-}
-
-.field {
-  display: flex;
-  align-items: baseline;
-  min-width: 9rem;
-  flex: 1 1 9rem;
-}
-
-.field::before {
-  content: "";
-  order: 0;
-  flex: 1 1 auto;
-  border-bottom: 1px dotted var(--rule);
-  margin: 0 0.55rem 0.3rem;
-  min-width: 1.5rem;
-}
-
-.field dt {
-  order: 1;
-  flex: 0 0 auto;
-  font-stretch: 62%;
-  font-size: 0.6875rem;
+.pot__price b {
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-quiet);
 }
 
-.field dd {
-  order: 2;
+/* the stepper: two round buttons and the number they move */
+.stepper {
+  grid-area: step;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
   flex: 0 0 auto;
-  margin: 0;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
+  padding: 0.2rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
 }
 
-.field--total dd {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+/* the frozen tick box: same price, so it is a plain option and not a second
+   product. checked state is ink, because green on this page means WhatsApp. */
+.frozen {
+  grid-area: frozen;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  margin-left: -0.5rem;
+  padding: 0 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ink-quiet);
+  cursor: pointer;
+  user-select: none;
 }
 
-.field--total[data-set="yes"] dd {
-  color: var(--red-ink);
+.frozen input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
-/* ---- without scripting the page is still a price list and a message ---- */
-
-.board-note__plain {
-  display: none;
-}
-
-.no-js .board-note__tap,
-.no-js .pot__mark,
-.no-js .pot__tally,
-.no-js .copy {
-  display: none;
-}
-
-.no-js .board-note__plain {
-  display: inline;
-}
-
-.no-js .pot {
-  cursor: default;
-}
-
-/* ---- the send plate: pinned on a phone, a row in the book on a screen ---- */
-
-.sendplate {
-  position: sticky;
-  bottom: 0;
-  z-index: 2;
+.frozen__box {
+  flex: 0 0 auto;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: 0.7rem;
-  margin: 0.9rem calc(-1 * var(--pad-right)) 0;
-  padding: 0.4rem var(--pad-right);
-  background-color: var(--paper);
-  background-image:
-    linear-gradient(to right, var(--grid) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-  background-size: var(--grid-size) var(--grid-size);
-  background-position: calc(var(--outer) + var(--margin)) 0;
-  box-shadow: 0 -1px 0 var(--rule), 0 -18px 28px -22px rgba(27, 36, 48, 0.55);
+  place-items: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 1.5px solid #b9c0bb;
+  border-radius: 0.4rem;
+  background: var(--card);
+  transition: background-color 140ms var(--ease), border-color 140ms var(--ease);
 }
 
-.sendplate__sum {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-  margin: 0;
-  padding-right: 0.7rem;
-  border-right: 1px solid var(--rule);
-  line-height: 1.15;
+.frozen__box::after {
+  content: "";
+  width: 0.6rem;
+  height: 0.32rem;
+  border-left: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  transform: rotate(-45deg) scale(0.5);
+  opacity: 0;
+  transition: transform 140ms var(--ease), opacity 140ms var(--ease), border-color 140ms var(--ease);
 }
 
-.sendplate__pots {
-  font-stretch: 62%;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-quiet);
-  white-space: nowrap;
-}
-
-.sendplate__total {
-  font-size: 1.25rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.015em;
-  white-space: nowrap;
-}
-
-.send {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  min-height: 3.3rem;
-  padding: 0.65rem 0.8rem;
-  background: var(--red-deep);
-  color: var(--paper-bright);
-  font-stretch: 88%;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.01em;
-  text-decoration: none;
-  transition: background-color 140ms linear;
-}
-
-.send:hover {
+.frozen input:checked + .frozen__box {
   background: var(--ink);
+  border-color: var(--ink);
 }
 
-.send:focus-visible {
-  outline-color: var(--ink);
+.frozen input:checked + .frozen__box::after {
+  border-color: #fff;
+  transform: rotate(-45deg) scale(1);
+  opacity: 1;
+}
+
+.frozen input:focus-visible + .frozen__box {
+  outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
 
-.send__arrow {
-  flex: 0 0 auto;
-  width: 1.15rem;
-  height: 0.65rem;
+.frozen:hover .frozen__box {
+  border-color: var(--ink-quiet);
 }
 
-.order__tools {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem 1rem;
-  margin: 0.85rem 0 0;
+.frozen:has(input:checked) .frozen__text {
+  color: var(--ink);
+  font-weight: 600;
 }
 
-.copy {
-  min-height: 44px;
-  min-width: 44px;
+.step {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: 0;
   border: 0;
-  background: none;
-  font: inherit;
-  font-size: 0.875rem;
-  font-weight: 600;
+  border-radius: var(--r-pill);
+  background: var(--card);
   color: var(--ink);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.3em;
-  text-decoration-color: var(--red);
+  font: inherit;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1;
   cursor: pointer;
+  box-shadow: 0 1px 2px rgba(22, 33, 29, 0.08);
+  transition: background-color 140ms var(--ease), color 140ms var(--ease),
+    transform 120ms var(--ease);
 }
 
-.copy:disabled {
+.step:hover {
+  background: var(--green-tint);
+  color: var(--green-dark);
+}
+
+.step:active {
+  transform: scale(0.94);
+}
+
+.step[data-step="-1"] {
   color: var(--ink-quiet);
-  text-decoration-color: var(--rule);
+  font-size: 1.15rem;
+}
+
+.step[data-step="-1"]:disabled {
+  color: var(--faint);
+  background: #f4f5f4;
   cursor: default;
+  box-shadow: none;
 }
 
-.order__note {
-  font-size: 0.8125rem;
+.step__n {
+  min-width: 2rem;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.pot[data-qty="0"] .step__n {
   color: var(--ink-quiet);
-  text-wrap: pretty;
+  font-weight: 500;
 }
 
-.order__note:empty {
-  display: none;
+.hint {
+  grid-column: 1 / -1;
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-quiet);
 }
 
-/* the title page opens into two columns once there is room for it */
-@media (min-width: 40rem) {
-  .board,
-  .order {
-    margin-top: 1.5rem;
-  }
-
-  .ledger {
-    margin-top: 1.25rem;
-  }
-
-  .pot {
-    min-height: 4rem;
-  }
-
-  .head {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
-    column-gap: 2rem;
-    align-items: end;
-  }
-
-  .wordmark {
-    grid-area: 1 / 1;
-  }
-
-  .standfirst {
-    grid-area: 1 / 2;
-    max-width: 32ch;
-    margin-top: 0;
-  }
-
-  .contents {
-    grid-area: 2 / 1 / 3 / 3;
-  }
-
-  .sheet {
-    padding-bottom: 6rem;
-  }
-
-  .sendplate {
-    padding: 0.7rem 0;
-  }
-
-  .order__tools {
-    margin-top: 0.9rem;
-  }
+.hint b {
+  font-weight: 700;
+  color: var(--ink);
 }
 
-/* ---- details ---- */
+/* ---- collecting ---- */
 
-.details__body,
-.details__foot {
+.where {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+}
+
+.where__title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.where__body {
   max-width: 62ch;
-  margin: 0.9rem 0 0;
-  font-size: 0.9375rem;
+  margin: 0.6rem 0 0;
   color: var(--ink-quiet);
-  text-wrap: pretty;
 }
 
 .record {
   margin: 1.25rem 0 0;
+  border-top: 1px solid var(--line-soft);
 }
 
-.field--wide {
-  flex-basis: 100%;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid var(--grid);
-}
-
-.field--wide dd {
-  min-width: 4rem;
-}
-
-.field--wide dd:empty::before {
-  content: attr(data-prompt);
-  font-weight: 400;
-  color: var(--rule-strong);
-  letter-spacing: 0.02em;
-}
-
-.field--wide dd[data-prompt]:not(:empty) {
-  min-width: 4rem;
-}
-
-/* ---- foot ---- */
-
-.foot {
-  margin-top: 3.5rem;
-  padding: 1rem 0 3rem;
-  border-top: 2px solid var(--ink);
-}
-
-.foot__line {
+.record__row {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.55rem;
-  margin: 0;
-  font-stretch: 62%;
-  font-size: 0.6875rem;
-  font-weight: 600;
+  align-items: baseline;
+  gap: 0.15rem 0.75rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.record dt {
+  flex: 0 0 9.5rem;
+  font-size: 0.95rem;
   color: var(--ink-quiet);
 }
 
-.foot__dot {
-  width: 3px;
-  height: 3px;
-  background: var(--red);
-  border-radius: 50%;
+.record dd {
+  flex: 1 1 12rem;
+  margin: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.record dd:empty::before {
+  content: attr(data-prompt);
+  font-weight: 400;
+  color: var(--ink-quiet);
+  border-bottom: 1px dashed #b9c0bb;
+}
+
+/* the number in the record is a way into WhatsApp, so it looks like one */
+.phone {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  color: var(--green);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-color: rgba(15, 122, 109, 0.4);
+}
+
+.phone:hover {
+  color: var(--green-dark);
+  text-decoration-color: currentColor;
+}
+
+.where__foot {
+  max-width: 62ch;
+  margin: 1.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-quiet);
+}
+
+.foot {
+  margin-top: 2rem;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.foot p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ink-quiet);
+}
+
+/* ---- the order bar: fixed, so the way out is never off screen ---- */
+
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -6px 24px -14px rgba(22, 33, 29, 0.4);
+}
+
+.bar__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.85rem;
+  width: 100%;
+  max-width: var(--page);
+  margin-inline: auto;
+  padding: 0.7rem var(--pad);
+}
+
+.bar__sum {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  min-width: 0;
+  padding-right: 0.85rem;
+  border-right: 1px solid var(--line);
+}
+
+.bar__pots {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-quiet);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bar__total {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.bar[data-has="no"] .bar__total {
+  color: var(--ink-quiet);
+}
+
+.wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex: 1 1 auto;
+  min-height: 3.25rem;
+  padding: 0.7rem 1rem;
+  border-radius: var(--r-pill);
+  background: var(--green);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 140ms var(--ease), transform 120ms var(--ease);
+}
+
+.wa:hover {
+  background: var(--green-dark);
+}
+
+.wa:active {
+  transform: scale(0.985);
+}
+
+.wa__mark {
+  flex: 0 0 auto;
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.copy {
+  flex: 0 0 100%;
+  min-height: 2.5rem;
+  padding: 0.35rem 0 0.4rem;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-quiet);
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--line);
+  cursor: pointer;
+}
+
+.copy:hover {
+  color: var(--ink);
+}
+
+.copy:disabled {
+  color: var(--faint);
+  cursor: default;
+  text-decoration: none;
+}
+
+@media (min-width: 44rem) {
+  .copy {
+    flex: 0 0 auto;
+    margin-left: auto;
+    padding: 0;
+    text-align: right;
+  }
+}
+
+/* ---- without scripting it is still a price list ---- */
+
+.no-js .stepper,
+.no-js .frozen,
+.no-js .hint,
+.no-js .copy {
+  display: none;
+}
+
+.no-js .pot {
+  min-height: 0;
+}
+
+.no-js .pot__price {
+  font-size: 1.35rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -783,5 +659,6 @@ body {
   *::before,
   *::after {
     transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
   }
 }

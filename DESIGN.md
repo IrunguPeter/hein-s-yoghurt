@@ -1,306 +1,269 @@
 ---
 name: Hein Yoghurt
-description: A squared exercise book read as a working order book, for ordering yoghurt over WhatsApp.
+description: A small shop window. Two flavour shelves, one price list, and a green door out to WhatsApp.
 colors:
-  paper: "#e6e8e3"
-  paper-bright: "#f7f7f4"
-  ink: "#1b2430"
-  ink-quiet: "#5a6165"
-  red: "#c0273c"
-  red-deep: "#a32739"
-  rule: "rgba(27, 36, 48, 0.26)"
-  rule-strong: "rgba(27, 36, 48, 0.6)"
-  grid: "rgba(27, 36, 48, 0.1)"
+  bg: "#f2f3f1"
+  card: "#ffffff"
+  ink: "#16211d"
+  ink-quiet: "#55605b"
+  faint: "#7f8883"
+  line: "#e2e5e1"
+  line-soft: "#eef0ed"
+  green: "#0f7a6d"
+  green-dark: "#0b6258"
+  green-tint: "#e6f4f2"
+  vanilla-tint: "#fbf4e6"
+  vanilla-line: "#eddfc2"
+  berry-tint: "#fdeef1"
+  berry-line: "#f4d3da"
 typography:
-  display:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "clamp(3.5rem, 18vw, 6.25rem)"
-    fontWeight: 800
-    fontVariation: "'wght' 800, 'wdth' 125"
-    lineHeight: 0.86
+  logo:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "clamp(2.5rem, 9vw, 3.5rem)"
+    fontWeight: 700
     letterSpacing: "-0.035em"
-  headline:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "clamp(1.5rem, 5.6vw, 2.125rem)"
-    fontWeight: 700
-    fontVariation: "'wght' 700, 'wdth' 125"
-    lineHeight: 1.1
-    letterSpacing: "-0.025em"
-  price:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "clamp(1.5rem, 6.4vw, 2rem)"
-    fontWeight: 600
-    fontVariation: "'wght' 600, 'wdth' 78"
-    lineHeight: 1.15
-  total:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "1.25rem"
-    fontWeight: 700
-    lineHeight: 1.15
-  order-line:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "1.125rem"
+    lineHeight: 1
+  logo-sub:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "0.95rem"
     fontWeight: 500
-    lineHeight: 1.35
-  body:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "1.0625rem"
-    fontWeight: 400
-    lineHeight: 1.55
-  action:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "1rem"
+    letterSpacing: "0.16em"
+  flavour-name:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "1.35rem"
     fontWeight: 700
-    letterSpacing: "0.01em"
-  lead:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "0.9375rem"
+    letterSpacing: "-0.02em"
+  price:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "1.5rem"
+    fontWeight: 700
+    letterSpacing: "-0.02em"
+  price-unit:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "0.8rem"
+    fontWeight: 600
+    letterSpacing: "0.06em"
+  sf-size:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "1.05rem"
+    fontWeight: 600
+  total:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "1.35rem"
+    fontWeight: 700
+    letterSpacing: "-0.025em"
+  body:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "1rem"
     fontWeight: 400
-    lineHeight: 1.55
-  control:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "0.875rem"
+    lineHeight: 1.5
+  action:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "1.05rem"
     fontWeight: 600
-  note:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "0.8125rem"
+  hint:
+    fontFamily: "Outfit, system-ui, sans-serif"
+    fontSize: "0.9rem"
     fontWeight: 400
-  wordmark-noun:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "0.8125rem"
-    fontWeight: 600
-    fontVariation: "'wght' 600, 'wdth' 62"
-    letterSpacing: "0.22em"
-  skip:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "0.78rem"
-    fontWeight: 600
-    fontVariation: "'wght' 600, 'wdth' 62"
-    letterSpacing: "0.14em"
-  nav:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "0.75rem"
-    fontWeight: 600
-    fontVariation: "'wght' 600, 'wdth' 62"
-    letterSpacing: "0.16em"
-  label:
-    fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "0.6875rem"
-    fontWeight: 600
-    fontVariation: "'wght' 600, 'wdth' 62"
-    letterSpacing: "0.16em"
 rounded:
-  none: "0px"
+  card: "1rem"
+  inner: "0.75rem"
+  pill: "999px"
 spacing:
-  field: "0.75rem"
   gap: "1rem"
-  section: "1.5rem"
-  plate: "0.4rem"
+  pad: "1.25rem"
+  page: "68rem"
+  touch: "2.5rem"
 components:
   button-primary:
-    backgroundColor: "{colors.red-deep}"
-    textColor: "{colors.paper-bright}"
-    rounded: "{rounded.none}"
-    padding: "0.65rem 0.8rem"
-    height: "3.3rem"
+    backgroundColor: "{colors.green}"
+    textColor: "#ffffff"
+    rounded: "{rounded.pill}"
+    padding: "0.7rem 1rem"
+    height: "3.25rem"
   button-primary-hover:
-    backgroundColor: "{colors.ink}"
-  link-underline:
+    backgroundColor: "{colors.green-dark}"
+  stepper-button:
+    backgroundColor: "{colors.card}"
     textColor: "{colors.ink}"
-  field-label:
-    textColor: "{colors.ink-quiet}"
-  nav-link:
-    textColor: "{colors.ink-quiet}"
+    rounded: "{rounded.pill}"
+    width: "2.5rem"
+    height: "2.5rem"
+  card:
+    backgroundColor: "{colors.card}"
+    borderColor: "{colors.line}"
+    rounded: "{rounded.card}"
 ---
 
 ## Overview
 
-**Creative North Star: "The Order Book."**
+**Creative North Star: "The Shop Window."**
 
-This page is a squared exercise book that happens to be open at the order page. Every
-decision serves that: the surface is paper, the layout is a 30px (8mm) squared grid you can
-see faintly through the page, and a red margin rule runs down the left edge like the one in a
-notebook. Structure comes from pencil rules and column heads, not from boxes, shadows, or
-rounded cards. There are no photographs anywhere, because the product is made in a home
-kitchen and the book is the packaging.
+This is the front of a small shop, seen from the street. Two shelves, one for each flavour, and
+on each shelf two pots with the price written large beside them. It is a page anyone can read in
+three seconds without being taught how: what is for sale, what it costs, and the green door you
+walk through to order.
 
-The interface is the order form. Tapping a pot is the act of writing a line in the book, so
-quantities are drawn as tally strokes rather than set as digits alone. The WhatsApp message is
-composed and shown in full before it is sent, never hidden behind a basket, a checkout, or a
-login. Money is real and visible at all times: every pot carries its price, and the total is
-repeated in the pinned bar so it is never more than a glance away.
+The whole vocabulary is borrowed from shops and marketplaces, because that is a shape nobody has
+to learn. Cards, not rules. Steppers, not tally marks. One green button, not a colour system. The
+previous design in this folder was an exercise book read as an order book; it was charming and it
+was too clever, and a customer had to decode it before they could buy. Decoding is the enemy here.
 
 **Key Characteristics:**
-- Paper first, ink second, exactly one red, used only where a hand would press harder.
-- Hairline rules and column heads instead of cards, borders-with-radius, or drop shadows.
-- Counts as tally strokes, because a book marks quantity by hand.
-- The send key is always present and always says what it does.
-- Nothing is invented: no photos, no stock claims, no reviews, no invented availability.
+- Two cards, one per flavour, side by side on a wide screen, stacked on a phone.
+- Every price visible immediately, with the size and the price on the same line.
+- One accent: WhatsApp green, used for the way out and nothing else.
+- The order button is fixed to the bottom of the screen, so it is never scrolled away from.
+- The flavour is told apart by its name first; the tint is decoration behind the name.
+- Nothing is invented: no photos, no reviews, no ingredient claims, no tasting notes.
 
 ## Colors
 
-Six values and three alpha rules. There is no second accent, no state green, no pastel set.
+White cards on a light grey page, one green, two flavour washes that never carry meaning alone.
 
 | Token | Value | Role |
 | --- | --- | --- |
-| `paper` | `#e6e8e3` | The page. A cool grey-green, not cream. |
-| `paper-bright` | `#f7f7f4` | Text and symbols on red fills only. |
-| `ink` | `#1b2430` | Body text, the top rule, the send key's hover fill. |
-| `ink-quiet` | `#5a6165` | Secondary text, labels, field names. |
-| `red` | `#c0273c` | The margin rule, tally strokes, links, selection. |
-| `red-deep` | `#a32739` | The send key's fill. |
-| `rule` | `rgba(27, 36, 48, 0.26)` | Hairlines: field rules, cell edges. |
-| `rule-strong` | `rgba(27, 36, 48, 0.6)` | Interactive underline on hover/focus. |
-| `grid` | `rgba(27, 36, 48, 0.1)` | The squared paper grid. |
+| `bg` | `#f2f3f1` | The page behind the cards. Cool grey, not cream. |
+| `card` | `#ffffff` | Cards, the order bar, the stepper buttons. |
+| `ink` | `#16211d` | Body text, names, prices. |
+| `ink-quiet` | `#55605b` | Secondary text, labels, the empty state of a count. |
+| `faint` | `#7f8883` | Disabled controls only. Deliberately the weakest thing on the page. |
+| `line` | `#e2e5e1` | Card borders, the bar's top rule. |
+| `line-soft` | `#eef0ed` | Divider between the two pots inside a card. |
+| `green` | `#0f7a6d` | The order button, the "Yoghurt" word under the logo, selection. |
+| `green-dark` | `#0b6258` | The button on hover. |
+| `green-tint` | `#e6f4f2` | The stepper button on hover. |
+| `vanilla-tint` / `vanilla-line` | `#fbf4e6` / `#eddfc2` | The vanilla card's head only. |
+| `berry-tint` / `berry-line` | `#fdeef1` / `#f4d3da` | The strawberry card's head only. |
 
-**The One Red Rule.** Red is ink that was pressed hard. It marks the margin, the counts, and the
-one action, and nothing else. If a new element is not one of those three, it is ink, not red.
+**The Green Contrast Rule.** The obvious WhatsApp green (`#128c7e`) fails WCAG AA both ways: it
+gives only 4.14:1 for white text sitting on it, and 3.72:1 as text on this page's background. The
+darker green used here, `#0f7a6d`, gives 5.22:1 and 4.69:1 respectively. Both pass. If the green is
+ever changed, both of those numbers have to be checked again, not just the first one.
 
-**The Paper Is Cool Rule.** The background is a grey-green, never a warm cream or beige. Warm
-off-white is the default "tasteful" surface; this book is ledger paper, and it stays cool.
+**The Name-First Rule.** Vanilla and strawberry are distinguished by their written names before
+anything else. The tint is allowed to reinforce the flavour, never to be the only thing that says
+which is which, because a tint does not survive a colour-blind reader or bright sunlight.
 
-**The Label Contrast Rule.** Uppercase labels are `ink-quiet` on paper only. On any red or ink
-fill, text is `paper-bright`, never `paper` — `paper` reads as washed-out grey on colour.
+**The One Green Rule.** Green means "this goes to WhatsApp". It appears on the order button, the
+hover state of a stepper button, and the small word under the logo. It is not used decoratively.
 
 ## Typography
 
-One family, Archivo, self-hosted as a variable font and used across its width axis. The stretch
-axis carries most of the hierarchy: wide for display, default for reading, condensed for labels.
-The ramp has fourteen steps and nothing sits off it.
+One family, Outfit, self-hosted as a variable font, in three weights: 400, 600, 700.
 
-- **Display** — the wordmark only. `clamp(3.5rem, 18vw, 6.25rem)`, weight 800, width 125%,
-  line-height 0.86, tracking -0.035em. Never used twice.
-- **Headline** — the three section headings. `clamp(1.5rem, 5.6vw, 2.125rem)`, weight 700,
-  width 125%, line-height 1.1, tracking -0.025em, balanced, capped at 26ch.
-- **Price** — the price in each pot cell. `clamp(1.5rem, 6.4vw, 2rem)`, weight 600, width 78%.
-- **Total** — the running totals, 1.25rem weight 700, tabular numerals.
-- **Order line** — 1.125rem weight 500. The message being composed is set larger than body copy
-  because it is the point of the page.
-- **Body** — 1.0625rem / 1.55. The standfirst is capped at 42ch, notes at 54ch.
-- **Action** — 1rem weight 700, the send key.
-- **Lead** — 0.9375rem, the board note, the details prose, and filled field values.
-- **Control** — 0.875rem weight 600, the copy button.
-- **Note** — 0.8125rem, the note beside the send key.
-- **Wordmark noun** — 0.8125rem weight 600, width 62%, tracking 0.22em.
-- **Skip** — 0.78rem, the skip link, revealed on focus.
-- **Nav** — 0.75rem, the contents links.
-- **Label** — 0.6875rem (11px floor), weight 600, width 62%, tracking 0.16em, uppercase. Used
-  for column heads, field names, and the footer. Anything under 11px fails.
+- **Logo** — the only display type. `clamp(2.5rem, 9vw, 3.5rem)`, weight 700, tracking -0.035em.
+- **Logo noun** — "Yoghurt", 0.95rem, weight 500, tracking 0.16em, uppercase, in `green`.
+- **Flavour name** — 1.35rem weight 700, tracking -0.02em.
+- **Price** — 1.5rem weight 700 with the `KSh` prefix at 0.8rem weight 600 in `ink-quiet`, so the
+  number is what the eye lands on and the currency is confirmed rather than shouted.
+- **Size** — 1.05rem weight 600, with the unit ("ml") at 400 in `ink-quiet`.
+- **Body** — 1rem / 1.5. Prose capped between 46ch and 62ch.
+- **Action** — 1.05rem weight 600 on the order button.
 
-Uppercase is for short labels only. Sentence-case text never gets wide tracking, even in the
-footer.
+There is no eleven-pixel label tier in this design. The smallest text on the page is 0.8rem
+(12.8px), and every piece of it is `ink-quiet` on white, which measures 6.5:1.
 
 ## Layout
 
-One column, always. The sheet is a book page, not a dashboard: `min(100% - 3.5rem, 42rem)` on
-phones widening to `44rem` at ≥40rem, with a 1.5rem red margin rule set inside the page's left
-padding. The paper grid is 30px and stays aligned to the page edge at every width.
+One column on a phone, two on a wide screen. The page is capped at 68rem.
 
-- **Mobile first.** Below 40rem everything is one column and the send bar is pinned to the
-  bottom of the screen.
-- **≥40rem** the title page becomes two columns (wordmark left, standfirst right), the measure
-  widens to 44rem, and the outer margin grows from 0.875rem to 1.75rem.
-- **The send bar is pinned at every width.** It is the only element that leaves the flow, it
-  carries the running total and the send key, and it must be fully visible in the first
-  viewport. The head is compressed at desktop widths specifically to guarantee this: the title
-  page's two-column layout buys back the fold.
-- **The bar is sized so it can never sit on the order line.** The composed order is the exact
-  text the send key copies, so it has first claim on the fold. Below 40rem the bar is 71.9px
-  (the key holds one line) and the order slip starts high enough that the line clears it by
-  34.6px with three pots marked and 10.3px with all four; at ≥40rem the bar is 75.2px and the
-  line clears by 68px. The bar may sit over the slip's `Total`/`Plates` row, because the bar
-  repeats both values beside the key.
-- **Exception, measured: viewports shorter than 700px.** At 360×640 and 375×667 the page cannot
-  fit the ledger, the order heading, and a 72px bar at once — the ledger alone ends 584px down
-  a 667px screen. So the first screen there shows the price list, the bar arrives with the order
-  block below the fold, and about 100px of scroll pins it with the order line clear above it.
-  The one visible artifact is the bar's leading edge crossing the 2-line order heading before
-  that scroll. The alternative (moving the bar above the slip) was measured and rejected: it
-  pushes the key off the first screen on exactly these heights.
-- **The ledger** is a real `<table>` with a visible stub column, so prices line up as columns
-  do in a book. Row heights are ≥64px; every pot is a ≥44×44px target.
-- **The pinned bar reserves 6rem of page padding** at ≥40rem so the details and footer can
-  always be scrolled clear of it.
+- **Below 44rem:** the two flavour cards stack, full width. The order bar is fixed to the bottom of
+  the screen and wraps onto two lines: the order button, then the copy link beneath it.
+- **At 44rem and above:** the cards sit side by side. The order bar becomes one row, with the copy
+  link pushed to the right-hand end.
+- The order bar is the only element outside the flow, and it is present at every width. It is
+  fixed rather than sticky, so the way out of the page is always in the same place.
+
+**The Measured Reserve Rule.** Because the bar is fixed, the page reserves room for it with
+`padding-bottom: calc(var(--bar-real) + 1.25rem)`, and `--bar-real` is measured from the bar by a
+`ResizeObserver` in `app.js` rather than guessed in CSS. This was a real bug: the first version
+hard-coded a 5.25rem reserve, but the bar is 120px in two-line mobile form and 173px at 320px
+wide, so the footer's last line sat underneath it. Measured reserves across the tested cases:
+120px at 390px wide, 173px at 320px, 75px on desktop, and 237px when a phone's root font is set to
+22px. All four now clear.
 
 ## Elevation & Depth
 
-The book is flat on purpose. There are no drop shadows on content, no cards, no raised panels.
-Depth comes from rules and one exception:
+Almost flat. Two very shallow shadows, both tinted to the ink hue rather than black:
 
-- The send bar carries `0 -1px 0 var(--rule)` plus a soft `0 -18px 28px -22px` ink wash, so
-  content passing under it reads as underneath rather than colliding with it.
-- Nothing else is elevated. If something needs to sit above the page, it is a rule.
+- Cards: `0 1px 2px rgba(22, 33, 29, 0.04)` — enough to lift the white off the grey, no more.
+- Stepper buttons: `0 1px 2px rgba(22, 33, 29, 0.08)`, so the round button reads as a real key.
+- The order bar: `0 -6px 24px -14px rgba(22, 33, 29, 0.4)`, so content passing under it reads as
+  underneath rather than colliding.
 
 ## Shapes
 
-Zero radius, everywhere, with no exceptions. The vocabulary is straight: hairline rules,
-square corners, and flat fills. The only non-rectangular geometry is the SVG arrow in the send
-key and the 2px tally strokes.
+A documented three-part radius scale, applied without exception:
 
-- Rules are 1px `--rule` hairlines; the sheet's top rule is 2px `--ink`.
-- Tally strokes are 2px wide, 1.05rem tall, square-ended, with a diagonal 5th stroke crossing
-  each group of four.
+- **Cards: `1rem`.** The flavour cards and the "collect it" panel.
+- **Inner: `0.75rem`.** Reserved for elements nested inside a card.
+- **Pills: `999px`.** Everything interactive: stepper buttons, the stepper track, the order button.
+
+Rule: round things are things you press; square-ish things are things that hold content.
 
 ## Components
 
-### The pot (button)
-- **Shape:** square, no radius, hairline cell edge, ≥44×44px.
-- **Default:** transparent over the paper grid, price in `ink` at 1.25rem weight 700.
-- **Marked:** `aria-pressed="true"`, price turns `red-ink`, a `×n` count appears top-right, and
-  tally strokes grow from the baseline. Strokes animate `transform: scaleY()` with a 22ms
-  per-stroke delay — never `height`.
-- **Focus:** 2px `ink` outline, 2px offset.
+### The flavour card
+- **Shape:** `1rem` radius, 1px `line` border, flat white body.
+- **Head:** the flavour name on a tinted band with a matching border below it. Vanilla is cream,
+  strawberry is pink. The band is the only place a flavour tint appears.
+- **Rows:** the two pots, divided by a 1px `line-soft` rule, 76px minimum height each.
 
-### The send key
-- **Shape:** square, full-width in the bar, ≥52.8px tall.
-- **Fill:** `red-deep` background, `paper-bright` text, weight 700, an inline SVG arrow.
-- **Hover:** fill becomes `ink` over 140ms.
-- **Focus:** 2px `ink` outline at 2px offset, so it stays visible on its own red fill.
+### The stepper
+- **Shape:** a pill track in `bg` with a 1px border, holding a minus key, the count, and a plus key.
+- **Keys:** 2.5rem round buttons, white, with the ink shadow. The plus key is `ink`; the minus key
+  is `ink-quiet` and becomes `faint` when disabled.
+- **Disabled minus:** at a count of zero the minus is `disabled`, so it leaves the tab order. A
+  keyboard user tabs the plus keys, and the minus keys join the order as soon as there is
+  something to remove.
+- **Count:** tabular figures, weight 700 in `ink` once positive and weight 500 in `ink-quiet` at
+  zero.
+- **Cap:** 20 per pot, enforced in `app.js`.
 
-### The order slip
-- **Shape:** square, a ruled field that overhangs the column by 0.75rem on each side, with 0.75rem
-  of internal inset so nothing touches its own rule.
-- **Fill:** `rgba(230, 232, 227, 0.72)` over the paper grid, top and bottom hairlines.
-- **State:** the line turns `red-ink` once anything is marked; the Total field gets
-  `data-set="yes"` and steps up in weight and size.
+### The order bar
+- **Shape:** full-width, fixed, 1px `line` top border, tinted shadow below-into-the-page.
+- **Contents:** the pot count and the running total on the left, divided by a hairline from the
+  order button, with the copy link wrapped beneath on a phone and pushed right on a wide screen.
+- **Empty state:** the count reads "Nothing picked yet", the total `KSh 0` sits in `ink-quiet`,
+  and the copy link is disabled.
+- **The button:** a green pill, 3.25rem tall, with the WhatsApp glyph drawn inline and the words
+  "Order on WhatsApp". White on green at 5.22:1.
 
-### The contents nav
-- **Style:** 11px uppercase labels, `ink-quiet`, `rule-strong` underline 0.3em below.
-- **Targets:** 0.45rem of horizontal padding with a matching negative margin, so each link is
-  ≥44×44px without disturbing the 1.5rem visual gap.
+### The copy link
+- **Style:** a text button, no fill, underlined in `line`, 0.85rem weight 500.
+- **Role:** the fallback for an in-app browser that will not open a WhatsApp link. It copies the
+  same message the button would have sent.
+- **Disabled:** `faint`, no underline, while the order is empty.
 
-### The copy control
-- **Style:** a text button, no fill, no border, 0.875rem weight 600, underlined in `red`.
-- **Disabled:** `ink-quiet` with a `rule` underline and `cursor: default` while the order is
-  empty.
-- **State:** reads "Copied" for the rest of the order's life once it succeeds.
+### The fill-in slots
+- **Style:** filled values are 600 weight in `ink`. Unfilled slots show the prompt text in
+  `ink-quiet` (6.54:1) with a dashed underline, so an empty slot reads as a blank to be filled
+  rather than a value.
 
 ### Without scripting
-`html.no-js` strips the marks, the tally, the copy button, and the tap instruction, so the page
-degrades to a price list and a working WhatsApp link instead of showing controls that do
-nothing.
+`html.no-js` hides the steppers, the hint, and the copy link, leaving a clean price list with two
+cards that still show every size and every price. The order button still opens WhatsApp.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep the send key visible in the first viewport at every width, and compress the head
-  rather than pushing the key down. The one measured exception is a viewport shorter than
-  700px, where the price list takes the first screen and the bar arrives with the order block.
-- **Do** set the running total in both the slip and the pinned bar; they are read in different
-  places.
-- **Do** use `paper-bright` for any text on a red or ink fill.
-- **Do** keep functional text at 11px or larger, and uppercase labels at 0.16em tracking or less.
-- **Do** animate `transform` and `opacity`, never `height` or `width`, on state changes.
-- **Do** write prices into the ledger cells where the owner can see and change them.
-- **Do** keep the page usable with scripting off: prices readable, send link working.
+- **Do** keep every price on the first screen at every width. This is the page's whole job.
+- **Do** keep the order button fixed and visible at all widths, and measure the bar to reserve
+  space for it rather than hard-coding a height.
+- **Do** check both directions of any colour change: text on the fill, and the fill as text.
+- **Do** keep the smallest type at 0.8rem / 12.8px or larger.
+- **Do** keep interactive targets at 40px minimum; the stepper keys are 40px and the order button
+  52px.
+- **Do** animate `transform` and `opacity` only, and honour `prefers-reduced-motion`.
+- **Do** keep the page usable with scripting off.
 
 ### Don't:
-- **Don't** add a second accent, a state colour, a gradient, or a shadow on content.
-- **Don't** add radius, cards, pill shapes, or a modal.
-- **Don't** hide the order behind a basket, an account, a payment step, or a spinner.
-- **Don't** warm the paper towards cream, or put grey `paper` text on the red fill.
-- **Don't** set body or sentence-case text in uppercase with wide tracking.
-- **Don't** invent facts to fill the page: no photos, no reviews, no delivery promises, no
-  sourcing, no availability. Unset details stay visibly unset for the owner to fill in.
-- **Don't** add a build step, framework, or third-party request. One folder, three files, a
-  local font.
+- **Don't** add a second accent colour, a gradient, or an illustration.
+- **Don't** let a flavour tint be the only thing distinguishing the flavours.
+- **Don't** hide the order behind a basket, a cart page, an account, a payment step, or a spinner.
+  WhatsApp is the checkout, and the page should never pretend otherwise.
+- **Don't** invent product copy. No ingredient claims, no tasting notes, no health or nutrition
+  claims, no sourcing, no reviews, no availability promises, no delivery promises.
+- **Don't** use the bright `#128c7e` WhatsApp green for text or as a text background; it fails AA.
+- **Don't** add a build step, framework, or third-party request. One folder, a local font.

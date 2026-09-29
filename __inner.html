@@ -1,6 +1,0 @@
-<!doctype html><html><body><pre id="V">inner-loaded</pre>
-<script>
-document.getElementById("V").textContent = "wrote " + innerWidth + "x" + innerHeight;
-try { parent.document.getElementById("OUT").textContent = "FROM-INNER " + innerWidth + "x" + innerHeight; } catch(e) { parent.document.getElementById("OUT").textContent = "ERR " + e.message; }
-setTimeout(function(){ try { parent.document.getElementById("OUT2").textContent = "TIMER-OK"; } catch(e){} }, 800);
-</script></body></html>

@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hein's Yoghurt - vanilla and strawberry</title>
 <meta name="description" content="Vanilla and strawberry yoghurt made in Hein's kitchen. 250 ml for KSh 60, 500 ml for KSh 120. Choose your pots and order on WhatsApp.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#f6efe7">
 <meta name="color-scheme" content="light">
 
 <!-- the link preview WhatsApp shows when someone shares this page -->
@@ -37,9 +37,26 @@
 <div class="wrap">
 
   <header class="top">
-    <h1 class="logo">Hein's
-      <span class="logo__sub">yoghurt</span></h1>
-    <p class="tagline">Vanilla and strawberry, made in Hein's kitchen. Choose your pots and order on WhatsApp.</p>
+    <div class="top__meta">
+      <span class="stamp">Small-batch yoghurt</span>
+      <span class="top__place">Rongai · Kenya</span>
+    </div>
+    <div class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow">Made in Hein's kitchen</p>
+        <h1 class="logo">Hein's <span class="logo__sub">yoghurt</span></h1>
+        <p class="tagline">Two flavours, two sizes, one very easy way to order.</p>
+        <a class="hero__jump" href="#flavours">Choose your pots <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <span class="hero__sun"></span>
+        <span class="hero__blob hero__blob--one"></span>
+        <span class="hero__blob hero__blob--two"></span>
+        <span class="hero__jar"><span></span></span>
+        <span class="hero__spark hero__spark--one">✦</span>
+        <span class="hero__spark hero__spark--two">✦</span>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -49,21 +66,23 @@
 
       <article class="flavour flavour--vanilla" data-flavour="vanilla">
         <header class="flavour__head">
+          <span class="flavour__eyebrow">Flavour 01</span>
           <h3 class="flavour__name">Vanilla</h3>
+          <span class="flavour__mark" aria-hidden="true">✦</span>
         </header>
 
         <div class="pots">
           <div class="pot" data-size="250">
             <div class="pot__id">
               <span class="pot__size">250 <span class="pot__unit">ml</span></span>
-              <span class="pot__price"><b>KSh</b> 65</span>
+              <span class="pot__price"><b>KSh</b> 60</span>
               <label class="frozen">
                 <input type="checkbox" data-frozen aria-label="Frozen: vanilla 250 millilitres">
                 <span class="frozen__box" aria-hidden="true"></span>
                 <span class="frozen__text">Frozen</span>
               </label>
             </div>
-            <div class="stepper" role="group" aria-label="Vanilla, 250 millilitres, KSh 65">
+            <div class="stepper" role="group" aria-label="Vanilla, 250 millilitres, KSh 60">
               <button type="button" class="step" data-step="-1" aria-label="One fewer vanilla 250 millilitre pot">&minus;</button>
               <output class="step__n" data-qty aria-live="off">0</output>
               <button type="button" class="step" data-step="1" aria-label="One more vanilla 250 millilitre pot">+</button>
@@ -91,21 +110,23 @@
 
       <article class="flavour flavour--strawberry" data-flavour="strawberry">
         <header class="flavour__head">
+          <span class="flavour__eyebrow">Flavour 02</span>
           <h3 class="flavour__name">Strawberry</h3>
+          <span class="flavour__mark" aria-hidden="true">✿</span>
         </header>
 
         <div class="pots">
           <div class="pot" data-size="250">
             <div class="pot__id">
               <span class="pot__size">250 <span class="pot__unit">ml</span></span>
-              <span class="pot__price"><b>KSh</b> 65</span>
+              <span class="pot__price"><b>KSh</b> 60</span>
               <label class="frozen">
                 <input type="checkbox" data-frozen aria-label="Frozen: strawberry 250 millilitres">
                 <span class="frozen__box" aria-hidden="true"></span>
                 <span class="frozen__text">Frozen</span>
               </label>
             </div>
-            <div class="stepper" role="group" aria-label="Strawberry, 250 millilitres, KSh 65">
+            <div class="stepper" role="group" aria-label="Strawberry, 250 millilitres, KSh 60">
               <button type="button" class="step" data-step="-1" aria-label="One fewer strawberry 250 millilitre pot">&minus;</button>
               <output class="step__n" data-qty aria-live="off">0</output>
               <button type="button" class="step" data-step="1" aria-label="One more strawberry 250 millilitre pot">+</button>
@@ -160,7 +181,7 @@
   </main>
 
   <footer class="foot">
-    <p>Hein's Yoghurt &middot; vanilla &middot; strawberry &middot; 250 ml KSh 65 &middot; 500 ml KSh 120</p>
+    <p>Hein's Yoghurt &middot; vanilla &middot; strawberry &middot; 250 ml KSh 60 &middot; 500 ml KSh 120</p>
   </footer>
 </div>
 

@@ -11,9 +11,9 @@
   };
 
   var POTS = {
-    "vanilla-250": { label: "Vanilla", size: "250 ml", price: 60 },
+    "vanilla-250": { label: "Vanilla", size: "250 ml", price: 65 },
     "vanilla-500": { label: "Vanilla", size: "500 ml", price: 120 },
-    "strawberry-250": { label: "Strawberry", size: "250 ml", price: 60 },
+    "strawberry-250": { label: "Strawberry", size: "250 ml", price: 65 },
     "strawberry-500": { label: "Strawberry", size: "500 ml", price: 120 }
   };
   var STORE = "hein-yoghurt.order";

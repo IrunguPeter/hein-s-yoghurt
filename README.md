@@ -41,7 +41,7 @@ Prices appear in two files, and they have to agree:
 - **`assets/app.js`** — the `POTS` object at the top, which does the adding up.
 
 ```
-"vanilla-250": { label: "Vanilla", size: "250 ml", price: 60 },
+"vanilla-250": { label: "Vanilla", size: "250 ml", price: 65 },
 ```
 
 If you only change one of the two, the card and the running total will disagree.
